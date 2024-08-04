@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cypress Test Reports</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #ffffff;
+          color: #000000;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+        }
+        header {
+          background-color: #000000;
+          color: #ffffff;
+          padding: 1rem;
+          text-align: center;
+        }
+        h1 {
+          margin: 0;
+        }
+        .container {
+          flex: 1;
+          max-width: 800px;
+          margin: 2rem auto;
+          padding: 1rem;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(196, 190, 190, 0.3);
+          text-align: left;
+        }
+        p {
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+        ul {
+          list-style-type: none;
+          padding: 0;
+        }
+        li {
+          margin: 0.5rem 0;
+        }
+        a {
+          text-decoration: none;
+          color: #0063c7;
+          font-size: 1.1rem;
+          transition: color 0.3s ease;
+        }
+        a:hover {
+          color: #00bfff;
+        }
+        footer {
+          background-color: #000000;
+          color: #ffffff;
+          text-align: center;
+          padding: 1rem;
+          font-size: 0.9rem;
+        }
+
+      ul {
+          list-style-type: none; /* Supprimer les puces par défaut */
+          padding: 0;
+          margin: 0;
+      }
+
+      ul li {
+          position: relative; /* Création d'un contexte de positionnement */
+          padding: 10px 0;
+          border-bottom: 1px solid #ddd;
+          padding-left: 20px; /* Ajouter de l'espace pour le tiret */
+      }
+
+      ul li::before {
+          content: "-"; /* Tirets devant chaque élément */
+          position: absolute;
+          left: 0; /* Ajustez la position pour s'aligner avec le padding de l'élément */
+          color: #555; /* Couleur des tirets */
+      }
+
+      ul li:last-child {
+          border-bottom: none; /}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Cypress Test Reports</h1>
+    </header>
+    <div class="container">
+      <p>
+        Welcome to the Cypress test reports Github Pages. <br />You can view the
+        detailed test reports for different browsers by clicking on the links
+        below:
+      </p>
+      <ul>
+        <li>
+          <a
+            href="https://hamza-lem.github.io/cy-sorry-cypress-dashboard/chrome/chrome-report/html/index.html"
+            target="_blank"
+            >Chrome Test Report</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://hamza-lem.github.io/cy-sorry-cypress-dashboard/firefox/firefox-report/html/index.html"
+            target="_blank"
+            >Firefox Test Report</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://hamza-lem.github.io/cy-sorry-cypress-dashboard/edge/edge-report/html/index.html"
+            target="_blank"
+            >Edge Test Report</a
+          >
+        </li>
+      </ul>
+    </div>
+    <footer>
+      <p>&copy; 2024 Cypress Test Reports Pages.</p>
+    </footer>
+  </body>
+</html>
