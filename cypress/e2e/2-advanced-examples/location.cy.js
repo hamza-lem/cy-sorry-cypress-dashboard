@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Location', () => {
+context(`Location - ${Cypress.browser.name}`, () => {
   beforeEach(() => {
     cy.visit('https://example.cypress.io/commands/location');
   });

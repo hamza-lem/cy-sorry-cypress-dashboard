@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Window', () => {
+context(`Window - ${Cypress.browser.name}`, () => {
   beforeEach(() => {
     cy.visit('https://example.cypress.io/commands/window');
   });

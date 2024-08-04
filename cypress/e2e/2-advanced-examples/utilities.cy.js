@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Utilities', () => {
+context(`Utilities - ${Cypress.browser.name}`, () => {
   beforeEach(() => {
     cy.visit('https://example.cypress.io/utilities');
   });

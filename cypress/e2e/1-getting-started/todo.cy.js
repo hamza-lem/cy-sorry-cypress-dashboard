@@ -11,7 +11,7 @@
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
 
-describe('example to-do app', () => {
+describe(`example to-do app - ${Cypress.browser.name}`, () => {
   beforeEach(() => {
     // Cypress starts out with a blank slate for each test
     // so we must tell it to visit our website with the `cy.visit()` command.
@@ -137,7 +137,7 @@ describe('example to-do app', () => {
         .should('not.have.text', 'Pay electric bill');
 
       // Finally, make sure that the clear button no longer exists.
-      cy.contains('Clear completed').should('exist');
+      cy.contains('Clear completed').should('not.exist');
     });
   });
 });
