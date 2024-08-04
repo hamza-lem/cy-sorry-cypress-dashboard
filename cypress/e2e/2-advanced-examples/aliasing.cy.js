@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Aliasing', () => {
+context(`Aliasing - ${Cypress.browser.name}`, () => {
   beforeEach(() => {
     cy.visit('https://example.cypress.io/commands/aliasing');
   });

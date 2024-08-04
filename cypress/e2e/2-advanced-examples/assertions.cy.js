@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 
-context('Assertions', () => {
+context(`Assertions - ${Cypress.browser.name}`, () => {
   beforeEach(() => {
     cy.visit('https://example.cypress.io/commands/assertions');
   });
 
-  describe('Implicit Assertions', () => {
+  describe(`Implicit Assertions - ${Cypress.browser.name}`, () => {
     it('.should() - make an assertion about the current subject', () => {
       // https://on.cypress.io/should
       cy.get('.assertion-table')

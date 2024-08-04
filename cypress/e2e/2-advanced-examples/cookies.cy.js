@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Cookies', () => {
+context(`Cookies - ${Cypress.browser.name}`, () => {
   beforeEach(() => {
     Cypress.Cookies.debug(true);
 

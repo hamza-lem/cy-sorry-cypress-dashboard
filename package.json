@@ -4,16 +4,21 @@
   "description": "This project integrates Cypress with Sorry-Cypress, an open-source, on-premise, self-hosted alternative to Cypress Cloud.",
   "main": "cypress.config.js",
   "scripts": {
+    "build": "cypress install",
     "lint": "eslint  --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "npm run lint --fix",
-    "format": "npx prettier --write --ignore-path .gitignore \"*.{js,json,yml,md}\" \"cypress/**/*.{js,json}\" \".github/workflows/**/*.yml\" \"*.yml\" \".github/ISSUE_TEMPLATE/**/*.md\" \"*.md\" \"*.prettierrc\" ",
+    "format": "npx prettier --write --ignore-path .gitignore \"*.{js,json,yml,md}\" \"cypress/**/*.{js,json}\" \".github/workflows/**/*.yml\" \"*.yml\" \"*.md\" \"*.prettierrc\" ",
     "check-format": "npx prettier --check .",
     "validate": "npm-run-all --parallel lint check-format",
-    "clean": "npm run clean:results && npm run clean:modules",
     "clean:modules": "rimraf ./node_modules",
     "clean:results": "rimraf ./cypress/reports ./cypress/videos ./cypress/screenshots ./cypress/downloads",
+    "clean": "npm run clean:results && npm run clean:modules",
+    "cy:info": "cypress info",
     "cy:open": "cypress open",
-    "cy:run": "cypress run ",
+    "cy:run": "cypress run --spec cypress/e2e/1-getting-started/todo.cy.js",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:edge": "cypress run --browser edge",
+    "cy:run:electron": "cypress run --browser electron",
     "cy:run:parallel": "cypress-parallel -s cypress run -t 2 -d 'cypress/e2e/**/*.cy.js' -o 'cypressParallel=true'",
     "cy:open-report": "open cypress/reports/html/index.html"
   },
@@ -35,10 +40,11 @@
   },
   "homepage": "https://github.com/hamza-lem/cy-sorry-cypress-dashboard#readme",
   "dependencies": {
-    "cypress": "^13.13.2",
+    "cypress": "^12.17.4",
     "mocha": "^10.7.0"
   },
   "devDependencies": {
+    "cypress-cloud": "^1.9.6",
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-parallel": "^0.14.0",
     "eslint": "^8.57.0",

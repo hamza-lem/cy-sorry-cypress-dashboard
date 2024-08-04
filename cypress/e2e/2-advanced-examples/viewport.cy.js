@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-context('Viewport', () => {
+context(`Viewport - ${Cypress.browser.name}`, () => {
   beforeEach(() => {
     cy.visit('https://example.cypress.io/commands/viewport');
   });

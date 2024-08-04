@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-context('Cypress APIs', () => {
-  context('Cypress.Commands', () => {
+context(`Cypress APIs - ${Cypress.browser.name}`, () => {
+  context(`Cypress.Commands - ${Cypress.browser.name}`, () => {
     beforeEach(() => {
       cy.visit('https://example.cypress.io/cypress-api');
     });

@@ -1,0 +1,128 @@
+name: Tests
+
+on:
+  # Triggers the workflow manually from the GitHub Actions tab
+  workflow_dispatch:
+  # Runs the workflow on every push to the repository
+  push:
+  # Runs the workflow on every push to the repository
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - closed
+    branches:
+      - master
+
+env:
+  NODE_VERSION: 20.10.0
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  cy-test:
+    runs-on: ubuntu-20.04
+    name: Run Cypress Tests
+    strategy:
+      # don't fail the entire matrix on failure
+      fail-fast: false
+      matrix:
+        # Run the job in parallel on different browser
+        browser:
+          - chrome
+          - electron
+          - edge
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION}}
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Unblock Cypress
+        run: |
+          echo 🕊️ Download Free Cypress
+          CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
+
+          echo ✅ Verify Cypress
+          npx cypress verify
+
+          echo 👀 Cypress Cache
+          npx cypress cache list
+          npx cypress cache path
+
+
+      - uses: cypress-io/github-action@v6
+        with:
+          install: false
+          build: npm run cy:info
+          wait-on-timeout: 180
+          browser: ${{ matrix.browser }}
+          config-file: cypress.config.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: 'cypress:server:args'
+
+      - name: Upload Cypress HTML Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.browser }}-report
+          path: 'cypress/reports'
+          retention-days: 3
+
+  cy-reports:
+    runs-on: ubuntu-20.04
+    needs: cy-test
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout Repository
+
+      - name: Download Chrome Report
+        uses: actions/download-artifact@v4
+        with:
+          name: chrome-report
+          path: chrome-report
+
+      - name: Download Electron Report
+        uses: actions/download-artifact@v4
+        with:
+          name: electron-report
+          path: electron-report
+
+      - name: Download Edge Report
+        uses: actions/download-artifact@v4
+        with:
+          name: edge-report
+          path: edge-report
+
+      - name: Copy Reports to Specific Directories
+        run: |
+          mkdir -p gh-pages/chrome
+          mkdir -p gh-pages/electron
+          mkdir -p gh-pages/edge
+          cp report/index.html gh-pages
+          cp -r chrome-report gh-pages/chrome/
+          cp -r electron-report gh-pages/electron/
+          cp -r edge-report gh-pages/edge/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./gh-pages
+          publish_branch: gh-pages
