@@ -134,3 +134,6 @@ runner-results
 cypress/screenshots
 cypress/videos
 cypress/reports
+data
+docker-compose.minio.yml
+.$sorry-cypress-arch.drawio.bkp

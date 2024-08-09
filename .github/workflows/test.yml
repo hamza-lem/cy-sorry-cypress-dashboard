@@ -3,19 +3,15 @@ name: Tests
 on:
   # Triggers the workflow manually from the GitHub Actions tab
   workflow_dispatch:
-  # Runs the workflow on every push to the repository
-  push:
-  # Runs the workflow on every push to the repository
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - closed
-    branches:
-      - master
+    inputs:
+      sorry_cypress:
+        description: 'Choose whether to send results to Sorry-Cypress'
+        required: true
+        default: 'false'
 
 env:
   NODE_VERSION: 20.10.0
+  SORRY_CYPRESS_DIRECTOR_URL: ${{ secrets.SORRY_CYPRESS_DIRECTOR_URL}}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -56,18 +52,20 @@ jobs:
 
       - name: Unblock Cypress
         run: |
-          echo 🕊️ Download Free Cypress
+          echo ### Download Free Cypress ###
           CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
 
-          echo ✅ Verify Cypress
+          echo ### Verify Cypress ###
           npx cypress verify
 
-          echo 👀 Cypress Cache
+          echo ### Cypress Cache ###
           npx cypress cache list
           npx cypress cache path
 
-
-      - uses: cypress-io/github-action@v6
+      - name: Run Cypress Tests
+        if: github.event.inputs.sorry_cypress == 'false'
+        uses: cypress-io/github-action@v6
+        continue-on-error: true
         with:
           install: false
           build: npm run cy:info
@@ -78,7 +76,24 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: 'cypress:server:args'
 
+      - name: Run Cypress Tests And send Data to Sorry-Cypress
+        if: github.event.inputs.sorry_cypress == 'true'
+        uses: cypress-io/github-action@v6
+        continue-on-error: true
+        with:
+          install: false
+          build: npm run cy:info
+          wait-on-timeout: 180
+          browser: ${{ matrix.browser }}
+          config-file: cypress.config.js
+          command: |
+            npx cypress-cloud run --browser ${{ matrix.browser }} --key ${{ secrets.SORRY_CYPRESS_RECORD_KEY }} --ci-build-id Run#${{ github.run_id }}-${{ matrix.browser }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: 'cypress:server:args'
+
       - name: Upload Cypress HTML Reports
+        if: github.event.inputs.sorry_cypress == 'false'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.browser }}-report
@@ -88,6 +103,7 @@ jobs:
   cy-reports:
     runs-on: ubuntu-20.04
     needs: cy-test
+    if: github.event.inputs.sorry_cypress == 'false'
     steps:
       - uses: actions/checkout@v4
         name: Checkout Repository

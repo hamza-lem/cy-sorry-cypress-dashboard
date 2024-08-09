@@ -1,0 +1,50 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.5 Chrome/126.0.6478.183 Electron/31.3.0 Safari/537.36" version="24.7.5">
+  <diagram id="prtHgNgQTEPvFCAcTncT" name="Page-1">
+    <mxGraphModel dx="1207" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LmnraRK7fbczGcJAW316-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BswZ_c2iV8BSaqOJSDTe-27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="414" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BswZ_c2iV8BSaqOJSDTe-27" value="" style="strokeColor=#000000;shadow=0;strokeWidth=1;rounded=1;absoluteArcSize=1;arcSize=2;" parent="1" vertex="1">
+          <mxGeometry x="334" y="280" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BswZ_c2iV8BSaqOJSDTe-28" value="&lt;font color=&quot;#000000&quot;&gt;cypress-cloud&lt;br&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Plugin&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="editableCssRules=.*;html=1;fontColor=#999999;shape=image;verticalLabelPosition=middle;verticalAlign=middle;labelPosition=right;align=left;spacingLeft=20;part=1;points=[];imageAspect=0;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnY9Imh0dHBzOi8vdmVjdGEuaW8vbmFubyIgd2lkdGg9IjQyNCIgaGVpZ2h0PSI0MjQiIHZpZXdCb3g9IjAgMCA0MjQgNDI0Ij4mI3hhOwk8c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDAgeyBmaWxsOiByZ2IoMCwgMCwgMCk7IH0gPC9zdHlsZT4mI3hhOwk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0IDB2NDI0SDBWMHpNMjEyIDk3Ljg0NmMtMzcuODg0IDAtNzAuMTY0IDIzLjk5LTgyLjQ3OCA1Ny42MDhoMGwtMy40MDMuMDAxYy00Mi42MzQgMC03Ny4xOTYgMzQuNTYyLTc3LjE5NiA3Ny4xOTZzMzQuNTYyIDc3LjE5NiA3Ny4xOTYgNzcuMTk2aDAgMTcxLjc2M2M0Mi42MzQgMCA3Ny4xOTYtMzQuNTYyIDc3LjE5Ni03Ny4xOTZzLTM0LjU2Mi03Ny4xOTYtNzcuMTk2LTc3LjE5NmgwbC0zLjQwMy0uMDAxQzI4Mi4xNjQgMTIxLjgzNyAyNDkuODg0IDk3Ljg0NiAyMTIgOTcuODQ2eiIgZmlsbC1ydWxlPSJldmVub2RkIi8+JiN4YTs8L3N2Zz4=;" parent="BswZ_c2iV8BSaqOJSDTe-27" vertex="1">
+          <mxGeometry width="30" height="30" relative="1" as="geometry">
+            <mxPoint x="15" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BswZ_c2iV8BSaqOJSDTe-37" value="Sorry-Cypress" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="50" width="700" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="LmnraRK7fbczGcJAW316-9" value="API (GraphQL)" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="BswZ_c2iV8BSaqOJSDTe-37">
+          <mxGeometry x="185" y="40" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="LmnraRK7fbczGcJAW316-18" value="A backend API that interacts with MongoDB and MinIO&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="LmnraRK7fbczGcJAW316-9">
+          <mxGeometry x="7.5" y="30" width="145" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LmnraRK7fbczGcJAW316-10" value="Dashboard" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="BswZ_c2iV8BSaqOJSDTe-37">
+          <mxGeometry x="10" y="40" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="LmnraRK7fbczGcJAW316-17" value="A web interface for visualizing test results for each cypress test run" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="LmnraRK7fbczGcJAW316-10">
+          <mxGeometry x="10" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LmnraRK7fbczGcJAW316-11" value="Director (MongoDB)" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="BswZ_c2iV8BSaqOJSDTe-37">
+          <mxGeometry x="360" y="40" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="LmnraRK7fbczGcJAW316-19" value="A Service that use MongoDB to store test runs details&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="LmnraRK7fbczGcJAW316-11">
+          <mxGeometry x="10" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LmnraRK7fbczGcJAW316-12" value="MinIo" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="BswZ_c2iV8BSaqOJSDTe-37">
+          <mxGeometry x="530" y="40" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="LmnraRK7fbczGcJAW316-20" value="A storage object system used to store test result screenshots/videos" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="LmnraRK7fbczGcJAW316-12">
+          <mxGeometry x="10" y="30" width="140" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
