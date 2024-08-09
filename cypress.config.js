@@ -1,8 +1,9 @@
-const { defineConfig } = require("cypress");
-const { cloudPlugin } = require("cypress-cloud/plugin");
+const { defineConfig } = require('cypress');
+const { cloudPlugin } = require('cypress-cloud/plugin');
 
-module.exports = defineConfig ({
+module.exports = defineConfig({
   video: true,
+  videoUploadOnPasses: false,
   retries: 1,
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {

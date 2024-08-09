@@ -19,6 +19,10 @@
     "cy:run:chrome": "cypress run --browser chrome",
     "cy:run:edge": "cypress run --browser edge",
     "cy:run:electron": "cypress run --browser electron",
+    "cy:run:sorry-cypress": "cypress-cloud run --parallel --key cy-key --ci-build-id Run#01",
+    "cy:run:sorry-cypress:chrome": "cypress-cloud run --browser chrome --parallel",
+    "cy:run:sorry-cypress:edge": "cypress-cloud run --browser edge --parallel",
+    "cy:run:sorry-cypress:electron": "cypress-cloud run --browser electron --parallel",
     "cy:run:parallel": "cypress-parallel -s cypress run -t 2 -d 'cypress/e2e/**/*.cy.js' -o 'cypressParallel=true'",
     "cy:open-report": "open cypress/reports/html/index.html"
   },

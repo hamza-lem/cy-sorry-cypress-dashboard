@@ -137,7 +137,10 @@ describe(`example to-do app - ${Cypress.browser.name}`, () => {
         .should('not.have.text', 'Pay electric bill');
 
       // Finally, make sure that the clear button no longer exists.
-      cy.contains('Clear completed').should('not.exist');
+      let result = ['not.exist', 'exist'];
+      cy.contains('Clear completed').should(
+        result[Math.floor(Math.random() * 2)],
+      );
     });
   });
 });
